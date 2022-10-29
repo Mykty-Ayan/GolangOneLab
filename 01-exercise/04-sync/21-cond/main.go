@@ -27,7 +27,8 @@ func main() {
 	}()
 
 	// writes changes to sharedRsc
-
+	cond.L.Lock()
 	sharedRsc["rsc1"] = "foo"
+	cond.L.Unlock()
 	wg.Wait()
 }
